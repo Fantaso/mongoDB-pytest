@@ -10,10 +10,14 @@ from mongoengine import (CASCADE, DateTimeField, DecimalField, DictField,
 from db import db_init
 
 
+db_init('prod')
+
 # user
+
+
 class User(Document):
     post_ids = ListField(ObjectIdField(required=True))
-    username = StringField(max_length=50, required=True)
+    username = StringField(max_length=50, required=True, unique=True)
     name = StringField(max_length=50, required=True)
     last_name = StringField(max_length=50, required=True)
     email = EmailField(max_length=100, required=True)
@@ -122,7 +126,7 @@ class Address(EmbeddedDocument):
     country = StringField(required=True, max_length=40)
     postcode = StringField(required=True, max_length=10)
 
-    geolocation = PointField(required=True, auto_index=True)  # geojson
+    geolocation = PointField(required=True, auto_index=True)  # geojson object
     extra = DictField()
 
     meta = {
@@ -167,7 +171,3 @@ class Shelter(Document):
 
     def __str__(self):
         return f'{self.geolocation}'
-
-
-if __name__ == '__main__':
-    db_init('prod')
