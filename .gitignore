@@ -3,7 +3,8 @@
 # Edit at https://www.gitignore.io/?templates=python
 
 # my condifgurations
-config.py
+archive/
+tests/posts_raw_data.py
 
 ### Python ###
 # Byte-compiled / optimized / DLL files

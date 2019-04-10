@@ -3,8 +3,8 @@ from os import environ
 from mongoengine import register_connection
 
 hosts = dict(
-    prod=environ.get('ALPACA_MONGO_DB_PROD'),
-    test=environ.get('ALPACA_MONGO_DB_TEST'),
+    prod=environ.get('MONGO_DB_PROD'),
+    test=environ.get('MONGO_DB_TEST'),
 )
 
 
