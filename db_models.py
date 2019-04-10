@@ -7,14 +7,13 @@ from mongoengine import (CASCADE, DateTimeField, DecimalField, DictField,
                          ObjectIdField, PointField, ReferenceField,
                          StringField, URLField)
 
-from db import db_init
+from db_setup import db_init
 
 
 db_init('prod')
 
+
 # user
-
-
 class User(Document):
     post_ids = ListField(ObjectIdField(required=True))
     username = StringField(max_length=50, required=True, unique=True)
